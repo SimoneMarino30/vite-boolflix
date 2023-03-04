@@ -1,11 +1,21 @@
 <script>
+import { store } from "../data/store.js";
+
 export default {
   data() {
     return {
-      term: "",
+      store,
     };
   },
   emits: ["selectedMovie"],
+
+  methods: {
+    searchedItem() {
+      this.$emit("selectedMovie", store.term);
+      console.log("researched " + store.term);
+      store.term = "";
+    },
+  },
 };
 </script>
 
@@ -17,10 +27,15 @@ export default {
       placeholder="Recipient's username"
       aria-label="Recipient's username"
       aria-describedby="button-addon2"
-      v-model="term"
-      @click="$emit('selectedMovie')"
+      v-model="store.term"
+      @keyUp.enter="searchedItem"
     />
-    <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+    <button
+      class="btn btn-outline-secondary"
+      type="button"
+      id="button-addon2"
+      @click="searchedItem"
+    >
       Search movies
     </button>
   </div>
