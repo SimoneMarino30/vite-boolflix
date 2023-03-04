@@ -1,20 +1,28 @@
 <script>
 import AppHeader from "./components/AppHeader.vue";
+import AppMain from "./components/AppMain.vue";
+
+import { store } from "./data/store";
 
 export default {
   data() {
     return {
-      title: "Hello world",
+      store,
+      title: "Hello Boolflix",
     };
   },
 
-  components: { AppHeader },
+  components: { AppHeader, AppMain },
 };
 </script>
 
 <template>
-  <h1 class="text-danger">{{ title }}</h1>
-  <AppHeader />
+  <h1 class="container text-danger">{{ title }}</h1>
+  <header>
+    <AppHeader />
+    <hr />
+    <AppMain />
+  </header>
 </template>
 
 <style lang="scss"></style>
