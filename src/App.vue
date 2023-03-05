@@ -1,7 +1,5 @@
 <script>
 import AppHeader from "./components/AppHeader.vue";
-import AppMain from "./components/AppMain.vue";
-
 import { store } from "./data/store";
 
 export default {
@@ -12,16 +10,16 @@ export default {
     };
   },
 
-  components: { AppHeader, AppMain },
+  components: { AppHeader },
 };
 </script>
 
 <template>
   <h1 class="container text-danger">{{ title }}</h1>
+  <hr />
   <header>
     <AppHeader />
     <hr />
-    <AppMain />
   </header>
 </template>
 

@@ -1,5 +1,6 @@
 <script>
 import { store } from "../data/store.js";
+// import AppMain from "./AppMain.vue";
 
 export default {
   data() {
@@ -7,7 +8,14 @@ export default {
       store,
     };
   },
+
+  props: {
+    placeholder: String,
+  },
+
   emits: ["selectedMovie"],
+
+  // components: { AppMain },
 
   methods: {
     searchedItem() {
@@ -24,21 +32,22 @@ export default {
     <input
       type="text"
       class="form-control"
-      placeholder="Recipient's username"
+      :placeholder="placeholder || 'Search...'"
       aria-label="Recipient's username"
       aria-describedby="button-addon2"
       v-model="store.term"
-      @keyUp.enter="searchedItem"
+      @keyup.enter="searchedItem"
     />
     <button
-      class="btn btn-outline-secondary"
+      class="btn btn-danger"
       type="button"
       id="button-addon2"
       @click="searchedItem"
     >
-      Search movies
+      Search
     </button>
   </div>
+  <!-- <AppMain /> -->
 </template>
 
 <style lang="scss"></style>

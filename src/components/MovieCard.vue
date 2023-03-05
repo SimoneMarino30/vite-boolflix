@@ -1,22 +1,21 @@
 <script>
-// import { store } from "../data/store.js";
+// import MyComponent from "./components/MyComponent.vue";
 
 export default {
-  //   data() {
-  //     return {
-  //         store,
-  //     };
-  //   },
-  //   components: {},
+  data() {
+    return {
+      title: "Hello world",
+    };
+  },
+
+  // components: {
+  //   MyComponent,
+  // },
 };
 </script>
 
 <template>
-  <div></div>
+  <h1>{{ title }}</h1>
 </template>
 
-<style lang="scss">
-// h3 {
-//   height: 500px;
-// }
-</style>
+<style lang="scss" scoped></style>
