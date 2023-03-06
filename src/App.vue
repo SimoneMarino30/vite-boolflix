@@ -16,10 +16,9 @@ export default {
 
 <template>
   <h1 class="container text-danger">{{ title }}</h1>
-  <hr />
+
   <header>
     <AppHeader />
-    <hr />
   </header>
 </template>
 

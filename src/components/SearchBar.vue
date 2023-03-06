@@ -1,6 +1,5 @@
 <script>
 import { store } from "../data/store.js";
-// import AppMain from "./AppMain.vue";
 
 export default {
   data() {
@@ -14,8 +13,6 @@ export default {
   },
 
   emits: ["selectedMovie"],
-
-  // components: { AppMain },
 
   methods: {
     searchedItem() {
@@ -47,7 +44,6 @@ export default {
       Search
     </button>
   </div>
-  <!-- <AppMain /> -->
 </template>
 
 <style lang="scss"></style>

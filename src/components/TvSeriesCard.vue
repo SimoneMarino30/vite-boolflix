@@ -84,10 +84,9 @@ ul {
   }
   // flipping card
   .flip-card {
-    background-color: firebrick;
+    background-color: rgba(242, 159, 6);
     width: 500px;
     height: 517px;
-    border: 2px dashed firebrick;
   }
   .flip-inside {
     position: relative;
@@ -96,7 +95,7 @@ ul {
     text-align: center;
     transition: transform 0.6s;
     transform-style: preserve-3d;
-    box-shadow: 0 4px 8px 0 rgba(242, 6, 6, 0.2);
+    box-shadow: 10px 10px 20px 0 rgba(242, 159, 6, 0.934);
   }
 
   .flip-card:hover .flip-inside {
@@ -112,7 +111,7 @@ ul {
   }
 
   .flip-front {
-    background-color: #bbb;
+    background-color: black;
     color: black;
   }
 
@@ -121,9 +120,5 @@ ul {
     color: white;
     transform: rotateY(180deg);
   }
-}
-
-main {
-  border: 2px dashed red;
 }
 </style>

@@ -53,8 +53,4 @@ export default {
   </main>
 </template>
 
-<style lang="scss">
-main {
-  border: 2px dashed red;
-}
-</style>
+<style lang="scss"></style>

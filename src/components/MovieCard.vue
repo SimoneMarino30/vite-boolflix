@@ -25,7 +25,7 @@ export default {
 </script>
 
 <template>
-  <ul class="m-3" v-for="movie in store.moviesList">
+  <ul class="m-3" v-for="movie in store.moviesList" text="Movies:">
     <div class="flip-card">
       <div class="flip-inside">
         <div class="flip-front">
@@ -87,7 +87,6 @@ ul {
     background-color: firebrick;
     width: 500px;
     height: 520px;
-    border: 2px dashed firebrick;
   }
   .flip-inside {
     position: relative;
@@ -96,7 +95,7 @@ ul {
     text-align: center;
     transition: transform 0.6s;
     transform-style: preserve-3d;
-    box-shadow: 0 4px 8px 0 rgba(242, 6, 6, 0.2);
+    box-shadow: 10px 10px 20px 0 rgba(242, 6, 6, 0.934);
   }
 
   .flip-card:hover .flip-inside {
@@ -121,9 +120,5 @@ ul {
     color: white;
     transform: rotateY(180deg);
   }
-}
-
-main {
-  border: 2px dashed red;
 }
 </style>
