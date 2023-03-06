@@ -15,22 +15,20 @@ export default {
 </script>
 
 <template>
-  <main class="d-flex flex-wrap justify-content-center">
-    <ul class="row row-cols-1 m-3" v-for="tvShow in store.TvSeriesList">
-      <li>Titolo: {{ tvShow.name }}</li>
-      <li>Titolo originale:{{ tvShow.original_title }}</li>
-      <li>
-        Lingua originale:
-        <img
-          :src="`${store.flagpoint}${tvShow.original_language}.png`"
-          alt="flag"
-          class="img-fluid flag-img"
-        />
-      </li>
-
-      <li>Voto medio: {{ tvShow.vote_average }}</li>
-    </ul>
-  </main>
+  <ul class="row row-cols-1 md-3 m-3" v-for="tvShow in store.TvSeriesList">
+    <li>Titolo: {{ tvShow.name }}</li>
+    <li>Titolo originale:{{ tvShow.original_name }}</li>
+    <li>
+      Lingua originale:
+      <img
+        :src="`${store.flagpoint}${tvShow.original_language}.png`"
+        alt="flag"
+        class="img-fluid flag-img"
+      />
+    </li>
+    <li>SERIEEEEEEEEEEEE</li>
+    <li>Voto medio: {{ tvShow.vote_average }}</li>
+  </ul>
 </template>
 
 <style lang="scss" scoped>

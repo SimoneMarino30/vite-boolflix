@@ -15,22 +15,20 @@ export default {
 </script>
 
 <template>
-  <main class="d-flex flex-wrap justify-content-center">
-    <ul class="row row-cols-1 m-3" v-for="movie in store.moviesList">
-      <li>Titolo: {{ movie.title }}</li>
-      <li>Titolo originale:{{ movie.original_title }}</li>
-      <li>
-        Lingua originale:
-        <img
-          :src="`${store.flagpoint}${movie.original_language}.png`"
-          alt="flag"
-          class="img-fluid flag-img"
-        />
-      </li>
-
-      <li>Voto medio: {{ movie.vote_average }}</li>
-    </ul>
-  </main>
+  <ul class="row row-cols-1 md-3 m-3" v-for="movie in store.moviesList">
+    <li>Titolo: {{ movie.title }}</li>
+    <li>Titolo originale:{{ movie.original_title }}</li>
+    <li>
+      Lingua originale:
+      <img
+        :src="`${store.flagpoint}${movie.original_language}.png`"
+        alt="flag"
+        class="img-fluid flag-img"
+      />
+    </li>
+    <li>MOVIEEEEEEEEE</li>
+    <li>Voto medio: {{ movie.vote_average }}</li>
+  </ul>
 </template>
 
 <style lang="scss" scoped>
@@ -42,9 +40,5 @@ ul {
   border: 2px dashed blue;
   width: calc(100% / 4);
   height: 450px;
-}
-
-main {
-  border: 2px dashed red;
 }
 </style>

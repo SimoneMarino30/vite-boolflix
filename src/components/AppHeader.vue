@@ -19,9 +19,9 @@ export default {
           `${store.endpoint}/search/multi?api_key=${store.myKey}&query=${store.term}`
         )
         .then((response) => {
-          if (response.data.results[0].media_type == "movie") {
+          if (response.data.results[0].media_type === "movie") {
             store.moviesList = response.data.results;
-          } else if (response.data.results[0].media_type == "tv") {
+          } else if (response.data.results[0].media_type === "tv") {
             store.TvSeriesList = response.data.results;
           }
 
@@ -30,9 +30,17 @@ export default {
     },
   },
 
-  props: {
-    lang: String,
+  computed: {
+    flagChange() {
+      if (store.moviesList[0].original_language == "en") {
+        return store.moviesList[0].original_language == "gb";
+      }
+    },
   },
+
+  // props: {
+  //   lang: String,
+  // },
 
   components: { SearchBar, MovieCard, TvSeriesCard },
 };
@@ -45,12 +53,14 @@ export default {
       @selectedMovie="showResearch"
     />
   </header>
-  <MovieCard />
-  <TvSeriesCard />
+  <main class="d-flex flex-wrap justify-content-center">
+    <MovieCard />
+    <TvSeriesCard />
+  </main>
 </template>
 
 <style lang="scss">
 main {
-  // height: 50vh;
+  border: 2px dashed red;
 }
 </style>
