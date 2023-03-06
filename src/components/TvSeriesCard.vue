@@ -16,19 +16,19 @@ export default {
 
 <template>
   <main class="d-flex flex-wrap justify-content-center">
-    <ul class="row row-cols-1 m-3" v-for="movie in store.moviesList">
-      <li>Titolo: {{ movie.title }}</li>
-      <li>Titolo originale:{{ movie.original_title }}</li>
+    <ul class="row row-cols-1 m-3" v-for="tvShow in store.TvSeriesList">
+      <li>Titolo: {{ tvShow.name }}</li>
+      <li>Titolo originale:{{ tvShow.original_title }}</li>
       <li>
         Lingua originale:
         <img
-          :src="`${store.flagpoint}${movie.original_language}.png`"
+          :src="`${store.flagpoint}${tvShow.original_language}.png`"
           alt="flag"
           class="img-fluid flag-img"
         />
       </li>
 
-      <li>Voto medio: {{ movie.vote_average }}</li>
+      <li>Voto medio: {{ tvShow.vote_average }}</li>
     </ul>
   </main>
 </template>

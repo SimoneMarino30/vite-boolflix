@@ -1,5 +1,7 @@
 <script>
 import SearchBar from "./SearchBar.vue";
+import MovieCard from "./MovieCard.vue";
+import TvSeriesCard from "./TvSeriesCard.vue";
 import axios from "axios";
 import { store } from "../data/store.js";
 
@@ -7,7 +9,6 @@ export default {
   data() {
     return {
       store,
-      moviesList: [],
     };
   },
 
@@ -18,8 +19,12 @@ export default {
           `${store.endpoint}/search/multi?api_key=${store.myKey}&query=${store.term}`
         )
         .then((response) => {
-          this.moviesList = response.data.results;
-          console.log(this.moviesList);
+          if (response.data.results[0].media_type == "movie") {
+            store.moviesList = response.data.results;
+          } else if (response.data.results[0].media_type == "tv") {
+            store.TvSeriesList = response.data.results;
+          }
+
           console.log(response.data.results);
         });
     },
@@ -29,7 +34,7 @@ export default {
     lang: String,
   },
 
-  components: { SearchBar },
+  components: { SearchBar, MovieCard, TvSeriesCard },
 };
 </script>
 
@@ -40,51 +45,12 @@ export default {
       @selectedMovie="showResearch"
     />
   </header>
-  <main>
-    <ul
-      class="row row cols-2 ms-5 d-inline-block"
-      v-for="movie in this.moviesList"
-    >
-      <li v-if="movie.media_type == 'movie'">Titolo: {{ movie.title }}</li>
-      <li v-else>Titolo: {{ movie.name }}</li>
-
-      <li v-if="movie.media_type == 'movie'">
-        Titolo originale:{{ movie.original_title }}
-      </li>
-      <li>
-        Lingua originale:
-        <img
-          :src="`${store.flagpoint}${movie.original_language}.png`"
-          alt="flag"
-          class="img-fluid flag-img"
-        />
-      </li>
-      <!-- v-if="movie.original_language === 'en' ? 'gb' : 'Not found'" -->
-      <!-- ********************************************************************** -->
-      <!-- <li>
-        Lingua originale:
-        {{ (movie.original_language = "en" ? "gb" : "it") }}
-      </li> -->
-      <li>Voto medio: {{ movie.vote_average }}</li>
-    </ul>
-  </main>
+  <MovieCard />
+  <TvSeriesCard />
 </template>
 
 <style lang="scss">
-header {
-  // background-color: black;
-}
-
 main {
-  height: 50vh;
-  .flag-img {
-    border: 3px dashed green;
-    height: 50px;
-    width: 50px;
-  }
-
-  ul {
-    list-style: none;
-  }
+  // height: 50vh;
 }
 </style>

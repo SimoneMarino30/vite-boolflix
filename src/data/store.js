@@ -5,4 +5,6 @@ export const store = reactive({
   endpoint: "https://api.themoviedb.org/3",
   flagpoint: "https://flagcdn.com/16x12/",
   term: "",
+  moviesList: [],
+  TvSeriesList: [],
 });
