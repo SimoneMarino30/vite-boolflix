@@ -37,7 +37,15 @@ export default {
         class="img-fluid flag-img"
       />
     </li>
-    <li>Voto medio: {{ movie.vote_average }}</li>
+    <li>
+      Voto medio:
+      <div v-for="num in 5" :key="num" class="d-inline-block">
+        <span v-if="num <= parseInt(movie.vote_average / 2)">
+          <font-awesome-icon icon="fa-solid fa-star" />
+        </span>
+      </div>
+    </li>
+
     <li>
       <img
         :src="`${store.imgpoint}${movie.poster_path}`"
@@ -55,7 +63,7 @@ ul {
 
 .row {
   border: 2px dashed blue;
-  width: calc(100% / 4);
+  width: calc(100% / 6);
   // background-color: #000;
   .poster-img {
     height: 450px;

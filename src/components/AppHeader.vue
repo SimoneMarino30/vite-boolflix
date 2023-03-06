@@ -44,10 +44,10 @@ export default {
     />
   </header>
   <main class="row-cols-12">
-    <div class="d-flex flex-row flex-wrap">
+    <div class="d-flex flex-row flex-wrap justify-content-center">
       <MovieCard />
     </div>
-    <div class="d-flex flex-row flex-wrap">
+    <div class="d-flex flex-row flex-wrap justify-content-center">
       <TvSeriesCard />
     </div>
   </main>

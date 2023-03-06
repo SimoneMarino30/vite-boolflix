@@ -27,7 +27,15 @@ export default {
         class="img-fluid flag-img"
       />
     </li>
-    <li>Voto medio: {{ tvShow.vote_average }}</li>
+    <li>
+      Voto medio:
+      <div v-for="num in 5" :key="num" class="d-inline-block">
+        <span v-if="num <= parseInt(tvShow.vote_average / 2)"
+          ><font-awesome-icon icon="fa-solid fa-star"
+        /></span>
+      </div>
+    </li>
+
     <li>
       <img
         :src="`${store.imgpoint}${tvShow.poster_path}`"
@@ -45,7 +53,7 @@ ul {
 
 .row {
   border: 2px dashed green;
-  width: calc(100% / 4);
+  width: calc(100% / 6);
 
   .poster-img {
     height: 450px;
