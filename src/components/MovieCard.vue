@@ -25,48 +25,105 @@ export default {
 </script>
 
 <template>
-  <ul class="row m-3" v-for="movie in store.moviesList">
-    <!-- <h1>Movies:</h1> -->
-    <li>Titolo: {{ movie.title }}</li>
-    <li>Titolo originale:{{ movie.original_title }}</li>
-    <li>
-      Lingua originale:
-      <img
-        :src="flagChange(movie.original_language)"
-        alt="flag"
-        class="img-fluid flag-img"
-      />
-    </li>
-    <li>
-      Voto medio:
-      <div v-for="num in 5" :key="num" class="d-inline-block">
-        <span v-if="num <= parseInt(movie.vote_average / 2)">
-          <font-awesome-icon icon="fa-solid fa-star" />
-        </span>
+  <ul class="m-3" v-for="movie in store.moviesList">
+    <div class="flip-card">
+      <div class="flip-inside">
+        <div class="flip-front">
+          <li>
+            <img
+              :src="`${store.imgpoint}${movie.poster_path}`"
+              alt=""
+              class="img-fluid"
+            />
+          </li>
+        </div>
+        <div class="flip-back">
+          <li>
+            Titolo: <br />
+            {{ movie.title }}
+          </li>
+          <li>
+            Titolo originale: <br />
+            {{ movie.original_name }}
+          </li>
+          <li>
+            Lingua originale:
+            <img
+              :src="flagChange(movie.original_language)"
+              alt="flag"
+              class="img-fluid flag-img"
+            />
+          </li>
+          <li>
+            Voto medio: <br />
+            <div v-for="num in 5" :key="num" class="d-inline-block">
+              <span v-if="num <= parseInt(movie.vote_average / 2)"
+                ><font-awesome-icon icon="fa-solid fa-star" class="review-star"
+              /></span>
+            </div>
+          </li>
+          <li>
+            Trama: <br />
+            {{ movie.overview }}
+          </li>
+        </div>
       </div>
-    </li>
-
-    <li>
-      <img
-        :src="`${store.imgpoint}${movie.poster_path}`"
-        alt=""
-        class="img-fluid poster-img"
-      />
-    </li>
+    </div>
   </ul>
 </template>
 
 <style lang="scss" scoped>
 ul {
   list-style: none;
+  background-color: black;
+
+  li {
+    background-color: black;
+    .review-star {
+      color: gold;
+    }
+  }
+  .flip-card {
+    background-color: firebrick;
+    width: 500px;
+    height: 520px;
+    border: 2px dashed firebrick;
+  }
+  .flip-inside {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(242, 6, 6, 0.2);
+  }
+
+  .flip-card:hover .flip-inside {
+    transform: rotateY(180deg);
+  }
+
+  .flip-front,
+  .flip-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+
+  .flip-front {
+    background-color: black;
+    color: black;
+  }
+
+  .flip-back {
+    background-color: black;
+    color: white;
+    transform: rotateY(180deg);
+  }
 }
 
-.row {
-  border: 2px dashed blue;
-  width: calc(100% / 6);
-  // background-color: #000;
-  .poster-img {
-    height: 450px;
-  }
+main {
+  border: 2px dashed red;
 }
 </style>
