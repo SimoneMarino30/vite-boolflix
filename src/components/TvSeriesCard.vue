@@ -15,7 +15,8 @@ export default {
 </script>
 
 <template>
-  <ul class="row row-cols-1 md-3 m-3" v-for="tvShow in store.TvSeriesList">
+  <ul class="row m-3" v-for="tvShow in store.TvSeriesList">
+    <!-- <h1>TV shows:</h1> -->
     <li>Titolo: {{ tvShow.name }}</li>
     <li>Titolo originale:{{ tvShow.original_name }}</li>
     <li>
@@ -26,8 +27,14 @@ export default {
         class="img-fluid flag-img"
       />
     </li>
-    <li>SERIEEEEEEEEEEEE</li>
     <li>Voto medio: {{ tvShow.vote_average }}</li>
+    <li>
+      <img
+        :src="`${store.imgpoint}${tvShow.poster_path}`"
+        alt=""
+        class="img-fluid poster-img"
+      />
+    </li>
   </ul>
 </template>
 
@@ -37,9 +44,12 @@ ul {
 }
 
 .row {
-  border: 2px dashed blue;
+  border: 2px dashed green;
   width: calc(100% / 4);
-  height: 450px;
+
+  .poster-img {
+    height: 450px;
+  }
 }
 
 main {

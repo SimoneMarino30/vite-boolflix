@@ -19,28 +19,18 @@ export default {
           `${store.endpoint}/search/multi?api_key=${store.myKey}&query=${store.term}`
         )
         .then((response) => {
-          if (response.data.results[0].media_type === "movie") {
-            store.moviesList = response.data.results;
-          } else if (response.data.results[0].media_type === "tv") {
-            store.TvSeriesList = response.data.results;
-          }
+          for (let i = 0; i < response.data.results.length; i++) {
+            let mediaType = response.data.results[i].media_type;
 
-          console.log(response.data.results);
+            if (mediaType == "movie") {
+              store.moviesList.push(response.data.results[i]);
+            } else if (mediaType == "tv") {
+              store.TvSeriesList.push(response.data.results[i]);
+            }
+          }
         });
     },
   },
-
-  computed: {
-    flagChange() {
-      if (store.moviesList[0].original_language == "en") {
-        return store.moviesList[0].original_language == "gb";
-      }
-    },
-  },
-
-  // props: {
-  //   lang: String,
-  // },
 
   components: { SearchBar, MovieCard, TvSeriesCard },
 };
@@ -53,9 +43,13 @@ export default {
       @selectedMovie="showResearch"
     />
   </header>
-  <main class="d-flex flex-wrap justify-content-center">
-    <MovieCard />
-    <TvSeriesCard />
+  <main class="row-cols-12">
+    <div class="d-flex flex-row flex-wrap">
+      <MovieCard />
+    </div>
+    <div class="d-flex flex-row flex-wrap">
+      <TvSeriesCard />
+    </div>
   </main>
 </template>
 

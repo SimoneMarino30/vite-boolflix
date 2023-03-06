@@ -8,6 +8,16 @@ export default {
     };
   },
 
+  methods: {
+    flagChange(nation) {
+      if (nation == "en") return "https://flagcdn.com/16x12/gb.png";
+      if (nation == "ja") return "https://flagcdn.com/16x12/jp.png";
+      if (nation == "zh") return "https://flagcdn.com/16x12/cn.png";
+      if (nation == "ko") return "https://flagcdn.com/16x12/kr.png";
+
+      return `${store.flagpoint}${nation}.png`;
+    },
+  },
   // components: {
   //   MyComponent,
   // },
@@ -15,19 +25,26 @@ export default {
 </script>
 
 <template>
-  <ul class="row row-cols-1 md-3 m-3" v-for="movie in store.moviesList">
+  <ul class="row m-3" v-for="movie in store.moviesList">
+    <!-- <h1>Movies:</h1> -->
     <li>Titolo: {{ movie.title }}</li>
     <li>Titolo originale:{{ movie.original_title }}</li>
     <li>
       Lingua originale:
       <img
-        :src="`${store.flagpoint}${movie.original_language}.png`"
+        :src="flagChange(movie.original_language)"
         alt="flag"
         class="img-fluid flag-img"
       />
     </li>
-    <li>MOVIEEEEEEEEE</li>
     <li>Voto medio: {{ movie.vote_average }}</li>
+    <li>
+      <img
+        :src="`${store.imgpoint}${movie.poster_path}`"
+        alt=""
+        class="img-fluid poster-img"
+      />
+    </li>
   </ul>
 </template>
 
@@ -39,6 +56,9 @@ ul {
 .row {
   border: 2px dashed blue;
   width: calc(100% / 4);
-  height: 450px;
+  // background-color: #000;
+  .poster-img {
+    height: 450px;
+  }
 }
 </style>
