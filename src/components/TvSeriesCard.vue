@@ -61,6 +61,21 @@ export default {
                 ><font-awesome-icon icon="fa-solid fa-star" class="review-star"
               /></span>
             </div>
+            <div
+              v-for="num in 5 - parseInt(tvShow.vote_average / 2)"
+              :key="num"
+              class="d-inline-block"
+            >
+              <span v-if="(num = Math.ceil(parseInt(tvShow.vote_average / 2)))"
+                ><font-awesome-icon icon="fa-solid fa-star" class="empty-star"
+              /></span>
+              <span v-else="(num = 0)"
+                ><font-awesome-icon
+                  :key="num"
+                  icon="fa-solid fa-star"
+                  class="empty-star"
+              /></span>
+            </div>
           </li>
           <li>
             Trama: <br />
@@ -80,6 +95,10 @@ ul {
     background-color: black;
     .review-star {
       color: gold;
+    }
+
+    .empty-star {
+      color: #bbb;
     }
   }
   // flipping card
