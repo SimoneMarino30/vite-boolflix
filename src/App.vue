@@ -15,8 +15,6 @@ export default {
 </script>
 
 <template>
-  <h1 class="container text-danger">{{ title }}</h1>
-
   <header>
     <AppHeader />
   </header>

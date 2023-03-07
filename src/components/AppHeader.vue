@@ -44,13 +44,36 @@ export default {
     />
   </header>
   <main class="row-cols-12">
-    <div class="d-flex flex-row flex-wrap justify-content-center">
+    <div
+      class="d-flex flex-row flex-wrap justify-content-center"
+      v-if="store.moviesList.length"
+    >
+      <h2 class="movie">Movies:</h2>
       <MovieCard />
     </div>
-    <div class="d-flex flex-row flex-wrap justify-content-center">
+    <div
+      class="d-flex flex-row flex-wrap justify-content-center"
+      v-if="store.TvSeriesList.length"
+    >
+      <h2 class="tv d-flex justify-content-start">Tv Shows:</h2>
       <TvSeriesCard />
+    </div>
+    <div v-if="!store.moviesList.length && !store.TvSeriesList.length">
+      <h2 class="start text-center mt-5">Cerca un film o una serie tv...</h2>
     </div>
   </main>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+h2.movie {
+  color: firebrick;
+}
+
+h2.tv {
+  color: rgba(242, 159, 6);
+}
+
+h2.start {
+  color: firebrick;
+}
+</style>

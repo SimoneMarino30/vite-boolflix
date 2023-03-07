@@ -14,6 +14,7 @@ export default {
       if (nation == "ja") return "https://flagcdn.com/16x12/jp.png";
       if (nation == "zh") return "https://flagcdn.com/16x12/cn.png";
       if (nation == "ko") return "https://flagcdn.com/16x12/kr.png";
+      if (nation == "hy") return "https://flagcdn.com/16x12/am.png";
 
       return `${store.flagpoint}${nation}.png`;
     },
