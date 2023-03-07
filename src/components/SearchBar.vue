@@ -25,7 +25,7 @@ export default {
 </script>
 
 <template>
-  <div class="d-flex justify-content-between mt-5">
+  <div class="d-flex justify-content-between m-5">
     <div class="container input-group mb-3">
       <img src="../assets/img/Boolflix.png" alt="logo" class="img-fluid" />
       <input

@@ -25,7 +25,7 @@ export default {
 </script>
 
 <template>
-  <ul class="m-3" v-for="tvShow in store.TvSeriesList">
+  <ul class="m-3 mt-5" v-for="tvShow in store.TvSeriesList">
     <div class="flip-card">
       <div class="flip-inside">
         <div class="flip-front">
@@ -93,6 +93,7 @@ ul {
   background-color: black;
   li {
     background-color: black;
+    padding: 0.2rem 0;
     .review-star {
       color: gold;
     }
@@ -101,7 +102,7 @@ ul {
       color: #bbb;
     }
   }
-  // flipping card
+  // flipping cards
   .flip-card {
     background-color: rgba(242, 159, 6);
     width: 500px;

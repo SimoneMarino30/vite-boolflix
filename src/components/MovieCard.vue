@@ -95,6 +95,7 @@ ul {
 
   li {
     background-color: black;
+    padding: 0.2rem 0;
     .review-star {
       color: gold;
     }

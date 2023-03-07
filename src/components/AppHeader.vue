@@ -19,15 +19,30 @@ export default {
           `${store.endpoint}/search/multi?api_key=${store.myKey}&query=${store.term}`
         )
         .then((response) => {
-          for (let i = 0; i < response.data.results.length; i++) {
-            let mediaType = response.data.results[i].media_type;
+          store.moviesList = response.data.results.filter(
+            (film) => film.media_type == "movie"
+          );
+          // FILM = response.data.results[i];
+          store.TvSeriesList = response.data.results.filter(
+            (film) => film.media_type == "tv"
+          );
 
-            if (mediaType == "movie") {
-              store.moviesList.push(response.data.results[i]);
-            } else if (mediaType == "tv") {
-              store.TvSeriesList.push(response.data.results[i]);
-            }
-          }
+          // **ALLA PRIMA RICERCA LA PAGINA E' BLOCCATA FINO AL REFRESH**
+
+          // DEVO RESETTARE L'ARRAY:
+          // store.moviesList = [];
+          // store.TvSeriesList = [];
+
+          // CICLO E PUSHO ( MEGLIO UN FILTER CHE E' GIA UN CICLO DI PER SE):
+          // for (let i = 0; i < response.data.results.length; i++) {
+          //   let mediaType = response.data.results[i].media_type;
+
+          //   if (mediaType == "movie") {
+          //     store.moviesList.push(response.data.results[i]);
+          //   } else if (mediaType == "tv") {
+          //     store.TvSeriesList.push(response.data.results[i]);
+          //   }
+          // }
         });
     },
   },
@@ -52,14 +67,16 @@ export default {
       <MovieCard />
     </div>
     <div
-      class="d-flex flex-row flex-wrap justify-content-center"
+      class="d-flex flex-row flex-wrap justify-content-center position-relative mt-5"
       v-if="store.TvSeriesList.length"
     >
-      <h2 class="tv d-flex justify-content-start">Tv Shows:</h2>
+      <h2 class="tv">Tv shows:</h2>
       <TvSeriesCard />
     </div>
     <div v-if="!store.moviesList.length && !store.TvSeriesList.length">
-      <h2 class="start text-center mt-5">Cerca un film o una serie tv...</h2>
+      <h2 class="start text-center mt-5">
+        Cerca i tuoi film e serie tv preferiti...
+      </h2>
     </div>
   </main>
 </template>
@@ -67,10 +84,15 @@ export default {
 <style lang="scss">
 h2.movie {
   color: firebrick;
+  height: fit-content;
+  position: absolute;
+  top: 10rem;
 }
 
 h2.tv {
   color: rgba(242, 159, 6);
+  height: fit-content;
+  position: absolute;
 }
 
 h2.start {
